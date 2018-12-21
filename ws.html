@@ -1,9 +1,11 @@
 <h1>
-    Web Socket Example
+    Udayipp alert
 </h1>
 <p>
     open console to see connection.
 </p>
+<button id= "get_data_button" onclick="requestData()">Get data</button>
+<button id= "get_meta_button" onclick="requestMeta()">Get meta</button>
 <script>
     var ws = new WebSocket('ws://localhost:40510');
 
@@ -12,7 +14,15 @@
         ws.send('connected')
     }
 
-    ws.onmessage = function (ev) {
-        console.log(ev);
+    ws.onmessage = function (event) {
+        console.log(event.data);
+    }
+
+    function requestData() {
+        ws.send('send data');
+    }
+
+    function requestMeta() {
+        ws.send('send meta');
     }
 </script>
